@@ -1,5 +1,7 @@
 <h1>Welcome to Isaac's Online App</h1>
 <h3>Lets Take a Look at the Menu!</h3>
+<app-search></app-search>
+<app-tags></app-tags>
 <div class="food-grid">
   <div class="food-item" *ngFor="let food of foods">
     <span class="favorite {{food.favorite ? '' : 'not'}}" (click)="toggleFavorite(food)" aria-label="Toggle Favorite" tabindex="0">

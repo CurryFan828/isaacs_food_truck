@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home';
+import { Search } from './search/search';
+
 export const routes: Routes = [
     {path: '', component: HomeComponent},
+    {path: 'search/:searchTerm', component: HomeComponent},
+    {path: 'tag/:tag', component: HomeComponent}
 ]
 
 @NgModule({
