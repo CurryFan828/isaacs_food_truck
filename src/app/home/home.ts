@@ -5,12 +5,13 @@ import { Food } from '../shared/models/Food';
 import { ActivatedRoute } from '@angular/router';
 import { Search } from "../search/search";
 import { Tags } from '../tags/tags';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
-  imports: [CommonModule, Search, Tags],
+  imports: [CommonModule, Search, Tags, RouterLink],
   standalone: true
 })
 export class HomeComponent implements OnInit {

@@ -15,10 +15,10 @@ export class FoodService {
 
   getAllTags(): Tag[] {
     return [
-      {name: 'All' , count: 7},
-      {name: 'Breakfast' , count: 7},
-      {name: 'Drink' , count: 1},
-      {name: 'Sweet' , count: 4},
+      {name: 'All' , count: 9},
+      {name: 'Breakfast' , count: 9},
+      {name: 'Drink' , count: 2},
+      {name: 'Sweet' , count: 5},
       {name: 'Biscuit' , count: 2},
       {name: 'Meat' , count: 1},
     ];
@@ -97,7 +97,7 @@ export class FoodService {
         favorite: true,
         stars: 5.0,
         imageUrl: '/assets/foods/food-5.jpg',
-        tags: ['Biscuits', 'Gravy', 'Breakfast', 'Chocolate', 'Sweet'],
+        tags: ['Biscuit', 'Gravy', 'Breakfast', 'Chocolate', 'Sweet'],
       },
       {
         id: 7,
@@ -108,7 +108,29 @@ export class FoodService {
         favorite: true,
         stars: 4.7,
         imageUrl: '/assets/foods/food-6.jpg',
-        tags: ['Biscuits', 'Gravy', 'Breakfast'],
+        tags: ['Biscuit', 'Gravy', 'Breakfast'],
+      },
+      {
+        id: 8,
+        name: 'Coffee',
+        price: 6,
+        quantity: 0,
+        cookTime: '3-5',
+        favorite: true,
+        stars: 4.0,
+        imageUrl: '/assets/foods/drink-2.jpg',
+        tags: ['Coffee', 'Drink', 'Breakfast'],
+      },
+      {
+        id: 9,
+        name: 'Cinnamon Roll',
+        price: 7,
+        quantity: 0,
+        cookTime: '5-10',
+        favorite: true,
+        stars: 5.0,
+        imageUrl: '/assets/foods/food-7.jpg',
+        tags: ['Cinnamon Roll', 'Roll', 'Breakfast', 'Cinnamon', 'Sweet'],
       },
     ];
   }
