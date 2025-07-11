@@ -1,14 +1,18 @@
+<app-popup-alert></app-popup-alert> <!-- Add this to display popup alerts -->
+
 <h1>Welcome to Isaac's Online App</h1>
 <h3>Lets Take a Look at the Menu!</h3>
+
 <app-search></app-search>
 <app-tags></app-tags>
+
 <div class="food-grid">
-  <div class="food-item" *ngFor="let food of foods" routerLink="/food/{{food.id}}">
+  <div class="food-item" *ngFor="let food of foods">
     <!-- Navigation link below (clicking this goes to the food page) -->
     <span class="favorite {{food.favorite ? '' : 'not'}}" (click)="toggleFavorite(food)" aria-label="Toggle Favorite" tabindex="0">
         ❤
     </span>
-    <div class="food-img-wrapper">
+    <div class="food-img-wrapper" routerLink="/food/{{food.id}}">
       <img class="food-img" [src]="food. imageUrl" [alt]="food">
     </div>
     <div class="name">
@@ -25,6 +29,6 @@
       <span class="quantity-value">{{ food.quantity }}</span>
       <button class="quantity-btn" (click)="increment(food)">+</button>
     </div>
-    <button class="add-cart-btn">Add to Cart</button>
+    <button  class="add-cart-btn" (click)="addToCart(food)">Add to Cart</button>
   </div>
 </div>
