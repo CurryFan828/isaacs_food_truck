@@ -62,6 +62,8 @@ export class HomeComponent implements OnInit {
   addToCart(food: Food) {
   const qty = food.quantity || 0;
   if (qty > 0) {
+    
+    // this.cartService.addToCart(food, qty); 
     // Add the item(s) to the cart
     for (let i = 0; i < qty; i++) {
       this.cartService.addToCart(food);

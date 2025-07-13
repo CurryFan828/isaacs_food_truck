@@ -23,10 +23,17 @@ export class CartService {
   );
 
 
+
+
+  /** let any component subscribe to the whole cart object */
+  // getCartObservable() {
+  //   return this.cart$.asObservable();
+  // }
+
+
   constructor() {
     this.loadCart();
   }
-
 
   addToCart(food: Food, qty: number = 1): void {
     if (qty <= 0) return;
@@ -61,6 +68,12 @@ export class CartService {
     this.cart$.next(this.cart);   // ⬅️ notify subscribers (badge)
   }
 
+
+
+  // private persistAndEmit() {
+  //   localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.cart));
+  //   this.cart$.next(this.cart);
+  // }
 
   getCart(): Cart {
     return this.cart;
