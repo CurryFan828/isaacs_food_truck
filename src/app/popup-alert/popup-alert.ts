@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PopupAlertService } from '../services/popup-alert/popup-alert.service';
 import { CartPage } from '../cart-page/cart-page'; 
 import { MenuPage } from '../menu-page/menu-page';
+import { FoodPage } from '../food-page/food-page';
 
 @Component({
   selector: 'app-popup-alert',
@@ -14,6 +15,8 @@ import { MenuPage } from '../menu-page/menu-page';
 export class PopupAlertComponent {
 
   @Input() type: 'success' | 'error' = 'success';
+
+  alertMessage: string | null = null;
 
   /** The current message (empty string means “hidden”) */
   message = '';

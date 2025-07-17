@@ -6,6 +6,7 @@ import { FoodPage } from './food-page/food-page';
 import { CartPage } from './cart-page/cart-page';
 import { MenuPage } from './menu-page/menu-page';
 import { Footer } from './footer/footer';
+import { CheckoutPage } from './checkout-page/checkout-page';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -14,6 +15,7 @@ export const routes: Routes = [
     {path: 'tag/:tag', component: MenuPage},
     {path: 'food/:id', component: FoodPage},
     {path: 'cart-page', component: CartPage},
+    { path: 'checkout', component: CheckoutPage },
     { path: '**', redirectTo: '' } 
 ]
 

@@ -1,4 +1,4 @@
-.popup-alert.success {
+.popup-alert {
   position: fixed;
   top: 16px;
   left: 50%;
@@ -14,6 +14,7 @@
   text-align: center;
   animation: fade 3s ease forwards;
 }
+
 
 .popup-alert.error {
   position: fixed;

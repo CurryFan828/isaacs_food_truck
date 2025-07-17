@@ -1,4 +1,5 @@
 <app-not-found [visible]="!food" notFoundMessage="Product Not Found!" resetLinkText="Back To Menu"></app-not-found>
+<app-popup-alert type="success"></app-popup-alert>
 
 <div *ngIf="food" class="page-wrapper">
   <div class="container">
@@ -16,16 +17,20 @@
         </div> -->
 
         <div class="cook-time">
-          Time to cook is about <strong>{{ food.cookTime }}</strong> minutes
+          Time to cook is about <strong>{{ food.cookTime }}</strong> minutes<br>
         </div>
-      </div>
 
-      <!-- Added wrapper for price + button -->
-      <div class="price-and-button">
-        <div class="price">
-          <span>{{ food.price | currency }}</span>
+        <div class="description">
+          <p>{{food.description}}</p>
         </div>
-        <button (click)="addToCart()" class="add-cart-btn">Add to Cart</button>
+
+        <!-- Added wrapper for price + button -->
+        <div class="price-and-button">
+          <div class="price">
+            <span>{{ food.price | currency }}</span>
+          </div>
+          <button (click)="addToCart()" class="add-cart-btn">Add to Cart</button>
+        </div>
       </div>
     </div>
   </div>

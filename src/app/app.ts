@@ -34,7 +34,7 @@ import { Footer } from "./footer/footer";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, Header, FoodPage, Footer],
+  imports: [RouterOutlet, FormsModule, Header, Footer],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

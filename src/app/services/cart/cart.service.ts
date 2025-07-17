@@ -59,14 +59,15 @@ export class CartService {
   }
 
 
-  changeQuantity(foodId: number, quantity: number): void {
-    let cartItem = this.cart.items.find(item => item.food.id === foodId);
-    if (!cartItem) return;
-
-    cartItem.quantity = quantity;
-    this.saveCart();
-    this.cart$.next(this.cart);   // ⬅️ notify subscribers (badge)
+  changeQuantity(foodId: number, quantity: number) {
+    const item = this.cart.items.find(ci => ci.food.id === foodId);
+    if (item) {
+      item.quantity = quantity;
+      this.saveCart();          // Save updated cart
+      this.cart$.next(this.cart);  // Notify subscribers for UI update
+    }
   }
+
 
 
 

@@ -8,6 +8,7 @@ export class PopupAlertService {
   alert$ = this.alertSubject.asObservable();
 
   show(message: string) {
-    this.alertSubject.next(message);
+    // Append zero-width space to make each message unique
+    this.alertSubject.next(message + '\u200B');
   }
 }

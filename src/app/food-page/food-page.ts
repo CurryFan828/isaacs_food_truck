@@ -6,10 +6,12 @@ import { FoodService } from '../services/food/food.service';
 import { Tags } from "../tags/tags";
 import { CartService } from '../services/cart/cart.service';
 import { NotFound } from "../not-found/not-found";
+import { PopupAlertService } from '../services/popup-alert/popup-alert.service';
+import { PopupAlertComponent } from '../popup-alert/popup-alert';
 
 @Component({
   selector: 'app-food-page',
-  imports: [CommonModule, NotFound],
+  imports: [CommonModule, NotFound, PopupAlertComponent],
   templateUrl: './food-page.html',
   styleUrls: ['./food-page.css']
 })
@@ -19,7 +21,9 @@ export class FoodPage implements OnInit{
   constructor(private activatedRoute: ActivatedRoute, 
     private foodService: FoodService,
     private cartService: CartService,
-    private router: Router) {
+    private router: Router,
+    private alertService: PopupAlertService
+) {
     activatedRoute.params.subscribe((params) => {
       if(params['id']) {
         this.food = foodService.getFoodById(params['id'])
@@ -37,10 +41,6 @@ export class FoodPage implements OnInit{
 
   addToCart() {
     this.cartService.addToCart(this.food);
-    this.router.navigateByUrl('/');
+    this.alertService.show(`${this.food.name} added to cart.`);
   }
-
-
-
-
 }

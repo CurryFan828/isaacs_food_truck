@@ -8,22 +8,38 @@ import { FoodService } from '../services/food/food.service';
 import { PopupAlertService } from '../services/popup-alert/popup-alert.service';
 import { PopupAlertComponent } from '../popup-alert/popup-alert';
 import { NotFound } from "../not-found/not-found";
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'; // For responsive check
+import { Router } from '@angular/router';
+import { CheckoutPage } from '../checkout-page/checkout-page';
 
 
 @Component({
   selector: 'app-cart-page',
-  imports: [CommonModule, RouterModule, PopupAlertComponent, NotFound],
+  imports: [CommonModule, RouterModule, PopupAlertComponent, NotFound, CheckoutPage],
   templateUrl: './cart-page.html',
   styleUrls: ['./cart-page.css']
 })
 export class CartPage implements OnInit{
 
   cart!: Cart;
+  totalQuantity: number = 0;
+
+  isMobile: boolean = false;
+  showCheckoutPanel: boolean = false;
+
+
   constructor(
     private cartService: CartService,
-    private alertService: PopupAlertService
+    private alertService: PopupAlertService,
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
   ) {
     this.setCart()
+
+    // Detect if mobile or desktop
+    this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
+      this.isMobile = result.matches;
+    });
    }
 
   ngOnInit(): void {
@@ -34,19 +50,37 @@ export class CartPage implements OnInit{
     this.cartService.removeFromCart(cartItem.food.id);
 
     /* 🔴 red popup (color is set in cart-page.css) */
-    this.alertService.show(`${cartItem.food.name} removed from cart`);
-    
+    this.alertService.show(`${cartItem.food.name} removed from cart\u200B`);   
+     
     this.setCart(); 
   }
 
-  changeQuantity(cartItem: CartItem, quantityInString: string){
-    const quantity = parseInt(quantityInString);
-    this.cartService.changeQuantity(cartItem.food.id, quantity)
-    this.setCart();
+  changeQuantity(cartItem: CartItem, quantityInString: string) {
+    const quantity = parseInt(quantityInString, 10);
+    if (quantity > 0) {
+      this.cartService.changeQuantity(cartItem.food.id, quantity);
+      this.setCart();
+    }
   }
 
   setCart() {
-    this.cart = this.cartService.getCart()
+    this.cart = this.cartService.getCart();
+    // Calculate total quantity (sum of all item quantities)
+    this.totalQuantity = this.cart.items.reduce((sum, item) => sum + item.quantity, 0);
   }
 
+
+  openCheckout() {
+    if (this.isMobile) {
+      // Navigate to full page checkout for mobile
+      this.router.navigate(['/checkout']);
+    } else {
+      // Show slide-out panel for desktop
+      this.showCheckoutPanel = true;
+    }
+  }
+
+  closeCheckout() {
+    this.showCheckoutPanel = false;
+  }
 }
