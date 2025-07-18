@@ -12,7 +12,7 @@
         ❤
     </span>
     <div class="food-img-wrapper" routerLink="/food/{{food.id}}">
-      <img class="food-img" [src]="food. imageUrl" [alt]="food">
+      <img class="food-img" [src]="food. imageUrl" [alt]="food" loading="lazy">
     </div>
     <div class="name">
         {{ food.name }}

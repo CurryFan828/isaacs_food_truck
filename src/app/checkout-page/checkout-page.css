@@ -1,10 +1,19 @@
+/* ============================================= */
+/* ✅ CHECKOUT & CHECKOUT ITEMS                  */
+/* ============================================= */
+
+.checkout-wrapper-rows {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .checkout-container {
   position: fixed;
   top: 0;
   right: 0;
   width: 33%;
   height: 100%;
-  background-color: #fff;
+  background-color: #e5e5e5;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
   padding: 1.5rem;
   overflow-y: auto;
@@ -15,6 +24,7 @@
   pointer-events: none;
   display: flex;
   flex-direction: column;
+  /* border: 2px solid red */
 }
 
 .checkout-container.open {
@@ -22,7 +32,6 @@
   opacity: 1;
   pointer-events: auto;
 }
-
 
 .checkout-item {
   display: flex;
@@ -51,23 +60,100 @@
   margin: 20px;
 }
 
-.proceed-btn{
-  font-size: 15px;
-  padding-bottom: 3px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  position: absolute;    /* Position it relative to the container */
-  left: 10px;            /* Move it 10px from the left */
-  top: 10px;             /* Position near top */
+
+/* ============================================= */
+/* ✅ PAYMENT & PAYMENT FORM                     */
+/* ============================================= */
+
+.payment-form-wrapper {
+  border-top: 2px solid black;
+  /* border: 3px solid blue; */
+}
+
+.payment-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.payment-form input {
+  font-size: 16px;
+}
+
+/* ============= FORM FIELD STYLING ============= */
+.form-field {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 35px 10px 10px; /* extra right padding for the icon */
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-field input {
+  border: 2px solid #ccc;
+  padding: 8px 40px 8px 8px; /* space for the checkmark on the right */
+  border-radius: 4px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.form-field.invalid input {
+  border-color: red;
+}
+
+.form-field.valid input {
+  border-color: #26923f;
+}
+
+.checkmark {
+  position: absolute;
+  right: 10px;
+  top: 71%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #26923f;
+  pointer-events: none;
+  display: none;
+}
+
+.form-field.valid .checkmark {
+  display: inline;
+}
+
+.form-field.valid .checkmark-icon {
+  display: block;
+}
+
+
+/* ============================================= */
+/* ✅ BUTTONS                                    */
+/* ============================================= */
+
+.proceed-btn {
+  font-size: 40px;
+  margin: 10px;
+  position: absolute;
+  left: -3px;
+  top: 10px;
   cursor: pointer;
-  background-color: transparent;
+  background-color: #e5e5e5;
   border: none;
-  border-bottom: 1px solid black;
-  color: black;           /* Button text/icon color */
+  color: black;
   font-weight: bold;
 }
 
-.confirm-btn{
+.proceed-btn:hover {
+  transform: scale(1.2);
+}
+
+.confirm-btn {
   padding: 10px;
   cursor: pointer;
   background-color: #28a745;
@@ -76,29 +162,36 @@
   border-radius: 20px;
 }
 
-.confirm-btn:hover{
+.confirm-btn:hover {
   background-color: #26923f;
 }
 
-.proceed-btn:hover {
-  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18); */
-  background-color: rgb(243, 243, 243);
-  transform: scale(1.01);
-  padding: none;
+.chevron-close {
+  position: relative;
+  left: 0;
+  margin-left: -30px;
+  padding-top: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
 }
 
-.payment-form label {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  margin: 15px;
+.chevron-close .material-icons {
+  font-size: 45px;
+  color: #000000;
+  transition: color 0.2s ease;
 }
 
-.payment-form input {
-  padding: 5px;
-  font-size: 16px;
-  margin-top: 4px;
+.chevron-close:hover .material-icons {
+  transform: scale(1.2);
 }
+
+
+/* ============================================= */
+/* 🧩 MISCELLANEOUS                              */
+/* ============================================= */
 
 span h2 {
   border-bottom: 2px solid gray;

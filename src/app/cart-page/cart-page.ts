@@ -83,4 +83,23 @@ export class CartPage implements OnInit{
   closeCheckout() {
     this.showCheckoutPanel = false;
   }
+
+  incrementQuantity(item: CartItem) {
+    this.cartService.changeQuantity(item.food.id, item.quantity + 1);
+    this.updateTotalQuantity();
+  }
+
+  decrementQuantity(item: CartItem) {
+    if (item.quantity > 1) {
+      this.cartService.changeQuantity(item.food.id, item.quantity - 1);
+      this.updateTotalQuantity();
+    }
+  }
+
+  updateTotalQuantity() {
+    // Sum all quantities from cart items
+    const cart = this.cartService.getCart();
+    this.totalQuantity = cart.items.reduce((sum, i) => sum + i.quantity, 0);
+  }
+
 }

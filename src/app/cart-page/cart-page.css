@@ -161,3 +161,31 @@ ul .remove-button:hover {
   font-size: 24px;
   cursor: pointer;
 }
+
+
+/* ========= CONTROL QUANTITY STYLE ========== */
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-control button {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.quantity-control span {
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.quantity-control button:hover {
+    transform: scale(1.1);
+}

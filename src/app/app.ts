@@ -41,7 +41,20 @@ import { Footer } from "./footer/footer";
 export class App {
   protected title = 'foodmine-course';
 
-   isHomePage = false;
+  isHomePage = false;
+
+  isLoggedIn = false;
+  userDisplayName = 'Guest';
+
+  handleLogin(user: string) {
+    this.isLoggedIn = true;
+    this.userDisplayName = user || 'Guest';
+  }
+
+  handleLogout() {
+    this.isLoggedIn = false;
+    this.userDisplayName = 'Guest';
+  }
 
   constructor(private router: Router) {
     this.router.events

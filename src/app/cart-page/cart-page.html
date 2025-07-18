@@ -15,16 +15,10 @@
                 </a>
             </div>
     
-            <div>
-                <select #quantitySelect 
-                        (change)="changeQuantity(cartItem, quantitySelect.value)" 
-                        [value]="cartItem.quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+            <div class="quantity-control">
+                <button (click)="decrementQuantity(cartItem)">−</button>
+                <span>{{ cartItem.quantity }}</span>
+                <button (click)="incrementQuantity(cartItem)">+</button>                   
             </div>
 
             <div>

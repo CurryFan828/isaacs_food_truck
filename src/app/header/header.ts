@@ -15,10 +15,24 @@ import { HomeComponent } from '../home/home';
 })
 export class Header{
 
+  cartCount = 0;
+  isLoggedIn = false; // or get from your AuthService or localStorage
+
   constructor(private cartService: CartService, private router: Router) {}
   // @Input() isHero = false; // default false, so that its true on home and false everywhere else
 
   ngOnInit() {
-
+    this.cartService.totalCount$.subscribe(count => {
+      this.cartCount = count;
+      });
   }
+
+  continueAsGuest() {
+    // You could set a flag, or navigate somewhere
+    // For example:
+    this.isLoggedIn = false; // Just a safety flag if needed
+    // Navigate to menu or home page
+    this.router.navigate(['/menu-page']);
+  }
+
 }
