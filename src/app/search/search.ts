@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -8,25 +8,46 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './search.html',
   styleUrls: ['./search.css']
 })
-export class Search implements OnInit{
+export class Search implements OnInit, AfterViewInit{
+  @ViewChild('searchInput') searchInput?: ElementRef<HTMLInputElement>;
 
-  searchTerm: String = "";
+  searchTerm = '';
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      if(params['searchTerm']) {
-        this.searchTerm = params['searchTerm']; 
-      } 
+      this.searchTerm = params['searchTerm'] ?? '';
     })
   }
 
+  ngAfterViewInit(): void {
+    this.focusSearchInput();
+  }
+
   search(): void {
-    if(this.searchTerm) {
-      this.router.navigateByUrl('/search/' + this.searchTerm);
-    } 
-    // else if (this.searchTerm == null /*|| this.searchTerm !== ?*/) {
-    //     this.router.navigateByUrl('')
-    // }
+    const trimmedTerm = this.searchTerm.trim();
+    if(trimmedTerm) {
+      this.router.navigateByUrl('/search/' + encodeURIComponent(trimmedTerm)).then(() => {
+        this.focusSearchInput();
+      });
+      return;
+    }
+
+    this.router.navigateByUrl('/menu-page').then(() => {
+      this.focusSearchInput();
+    });
+  }
+
+  private focusSearchInput(): void {
+    const input = this.searchInput?.nativeElement;
+    if (!input) {
+      return;
+    }
+
+    input.focus();
+    const cursorPosition = this.searchTerm.length;
+    input.setSelectionRange(cursorPosition, cursorPosition);
+
+
   }
 }

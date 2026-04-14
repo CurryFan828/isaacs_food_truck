@@ -21,12 +21,14 @@ h1 {
 
 /* ================= GRID ================= */
 .food-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 1rem;
-
-    margin: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, 1fr)); /* 3 per row on desktop */
+    gap: 2.5rem;
+    margin: 1rem auto;
+    /* center and limit width so it lines up with the search area */
+    width: min(1200px, 100%);
+    padding: 0 1rem; /* small horizontal padding for small screens */
+    justify-items: stretch; /* cells fill their column for even spacing */
 }
 
 /* ================= CARD ================= */
@@ -36,10 +38,10 @@ h1 {
     align-items: center;
     justify-content: space-between;
 
-    width: 280px;
-    min-height: 380px;
+    width: 100%;
+    /* max-width: 350px; */
+    min-height: 400px;
 
-    margin: 1rem;
     padding: 1rem;
 
     border-radius: 12px;
@@ -47,15 +49,16 @@ h1 {
     background: #f6efe6;
 
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-
     transition: transform 0.2s, box-shadow 0.2s;
 
     position: relative;
+    box-sizing: border-box;
 }
 
 .food-item:hover {
     transform: scale(1.02);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    /* cursor: pointer; */
 }
 
 /* ================= FAVORITE ================= */
@@ -63,7 +66,6 @@ h1 {
     position: absolute;
     top: 10px;
     right: 12px;
-
     font-size: 1.3rem;
     color: #ff7675;
     cursor: pointer;
@@ -77,12 +79,11 @@ h1 {
 .food-img-wrapper {
     width: 200px;
     height: 200px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin: 0.5rem auto;
+    cursor: pointer;
 }
 
 .food-img {
@@ -91,6 +92,7 @@ h1 {
     object-fit: cover;
     border-radius: 12px;
 }
+
 /* ================= TEXT ================= */
 .name {
     font-size: 1.2rem;
@@ -108,7 +110,6 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     width: 100%;
     gap: 0.5rem;
 }
@@ -124,18 +125,16 @@ h1 {
 .quantity-btn {
     width: 30px;
     height: 30px;
-
     font-size: 18px;
-
     background-color: white;
     border: none;
     cursor: pointer;
-
     border-radius: 6px;
+    transition: transform 0.15s ease;
 }
 
 .quantity-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .quantity-value {
@@ -158,15 +157,16 @@ h1 {
     font-weight: 650;
 
     box-shadow: 0 2px 6px rgba(0,0,0,0.18);
-    transition: background 0.2s;
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 
     width: 100%;
     max-width: 200px;
 }
 
 .add-cart-btn:hover {
-    transform: scale(1.03);
-    box-shadow: 0 2px 14px rgba(0,0,0,0.3);
+    transform: translateY(-2px); /* slightly smaller = smoother */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 /* ================= NOT FOUND / SEARCH AREA ================= */
@@ -174,33 +174,45 @@ app-search,
 app-tags {
     display: block;
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 1200px; /* match the grid max width so they align/center */
 }
 
 /* ================= RESPONSIVE ================= */
-
-/* Tablets */
+/* Tablet: 2 per row */
 @media (max-width: 900px) {
+    .food-grid {
+        grid-template-columns: repeat(2, minmax(200px, 1fr)); /* tablet: 2 per row */
+        width: min(900px, 100%);
+    }
+
+    .food-img-wrapper {
+        width: 170px;
+        height: 170px;
+    }
+
     .food-item {
-        width: 45%;
+        max-width: 300px;
+        margin: 0 auto;
     }
 }
 
-/* Mobile */
+/* Mobile: 1 per row */
 @media (max-width: 600px) {
     .food-grid {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr; /* mobile: 1 per row */
+        width: 100%;
+        gap: 1.25rem;
+        padding: 0 1rem;
     }
 
     .food-item {
-        width: 100%;
-        max-width: 350px;
+        max-width: 275px;
+        margin: 0 auto;
     }
 
-    .food-img {
-        width: 100px;
-        height: 100px;
+    .food-img-wrapper {
+        width: 140px;
+        height: 140px;
     }
 
     .name {
@@ -213,19 +225,5 @@ app-tags {
 
     .add-cart-btn {
         width: 100%;
-    }
-}
-
-@media (max-width: 900px) {
-    .food-img-wrapper {
-        width: 170px;
-        height: 170px;
-    }
-}
-
-@media (max-width: 600px) {
-    .food-img-wrapper {
-        width: 140px;
-        height: 140px;
     }
 }

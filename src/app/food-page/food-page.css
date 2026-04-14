@@ -29,7 +29,7 @@
   left: 16px;
   font-size: 1rem;
   font-weight: 500;
-  color: #444;
+  color: #000;
   background: #ffffff;
   cursor: pointer;
   text-decoration: none;
@@ -45,8 +45,8 @@
 .back-btn:hover {
   color: #000 ; 
   background: #f2f2f2; 
-  transform: translateY(-2px) scale(1.08) ;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) ;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   cursor: pointer;
 }
 

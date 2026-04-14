@@ -13,7 +13,29 @@ export class FoodService {
   }
 
   getAllFoodsBySearchTerm(searchTerm: string): Food[] {
-    return this.getAllFoods().filter(food => food.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+    return this.getAllFoods().filter(food => this.matchesOrderedLetters(food.name, normalizedSearchTerm));
+  }
+
+  private matchesOrderedLetters(text: string, query: string): boolean {
+    if (!query) {
+      return true;
+    }
+
+    let queryIndex = 0;
+    const loweredText = text.toLowerCase();
+    for (const character of loweredText) {
+      if (character === query[queryIndex]) {
+        queryIndex += 1;
+      }
+
+      if (queryIndex === query.length) {
+        return true;
+      }
+    }
+
+    return false;
+
   }
 
   getAllTags(): Tag[] {

@@ -9,6 +9,7 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     padding: 6px 12px;
     border: 2px solid #b1832ea7; /* tan color */
+    transition: background 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
 }
 
 .search-bar input[type="text"] {
@@ -48,11 +49,6 @@
     transform: scale(1.04)
 }
 
-/* On hover, grow and outline pink */
-.search-bar:hover {
-    transform: scale(1.01);
-}
-
 .divider{
     width: 1px;
     height: 40px;
@@ -61,6 +57,11 @@
     align-self: stretch;
 }
 
+.search-bar:focus-within {
+    background: #ffe9c9; /* slightly lighter tan */
+    border: 2px solid #b1832e; /* stronger border */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
 
 
 

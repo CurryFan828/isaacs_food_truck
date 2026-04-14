@@ -219,6 +219,11 @@ nav ul li a:hover::after {
   color: black;
 }
 
+.mobile-menu a:hover {
+  background-color: #ffe9c9;
+  border-radius: 6px;
+}
+
 /* Overlay */
 .overlay {
   position: fixed;

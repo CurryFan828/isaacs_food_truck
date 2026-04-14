@@ -19,7 +19,7 @@ a {
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.25s ease;
+  transition: transform 0.2s ease;
   user-select: none;
   font-size: 0.95rem;
   display: inline-flex;
@@ -31,8 +31,8 @@ a {
 /* Hover effect */
 a:hover,
 a:focus-visible {
-  box-shadow: 0 3px 8px black;
-  padding: 0.55rem 1.3rem; /* slightly increase padding */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+  transform: scale(1.02); /* instead of padding change */
   outline: none;
 }
 
