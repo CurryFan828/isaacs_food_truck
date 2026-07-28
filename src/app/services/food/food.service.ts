@@ -9,7 +9,7 @@ import { map, shareReplay } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FoodService {
-  private readonly memoryUrl = 'http://sunnysideb-api.isaacstanek.com/';
+  private readonly memoryUrl = 'https://sunnysideb-api.isaacstanek.com/';
   protected menu$!: Observable<Food[]>;
 
 

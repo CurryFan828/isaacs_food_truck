@@ -130,7 +130,7 @@ src/
 
 ## How the App Works
 
-1. **Menu Data** — When the app loads, it fetches the menu from the live API at `http://sunnysideb-api.isaacstanek.com/`. The data is cached so it is not re-fetched every time you navigate between pages.
+1. **Menu Data** — When the app loads, it fetches the menu from the live API at `https://sunnysideb-api.isaacstanek.com/`. The data is cached so it is not re-fetched every time you navigate between pages.
 
 2. **Cart** — When you add an item to the cart, it is saved to `localStorage` in your browser. This means your cart is preserved even if you refresh the page.
 
@@ -170,7 +170,7 @@ The output files will be placed in the `dist/` folder. These are the files you w
 
 The app connects to a custom REST API to load menu items:
 
-- **Base URL:** `http://sunnysideb-api.isaacstanek.com/`
+- **Base URL:** `https://sunnysideb-api.isaacstanek.com/`
 - **Menu endpoint:** `GET /` — Returns an array of food items with name, price, tags, image URL, star rating, and cook time.
 
 ---
